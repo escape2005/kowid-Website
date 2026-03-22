@@ -1,186 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Career opportunities at Kowid - Join our mission to transform foundational learning in India.">
-    <title>Careers - Join Kowid</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join Kowid — full-time careers and internships for people who want to build the future of learning in India.">
+  <title>Join Kowid — Careers & Internships</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+
+    /* ── Path toggle tabs ── */
+    .path-tabs {
+      display: flex;
+      gap: 0;
+      background: var(--bg-light);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 5px;
+      max-width: 440px;
+      margin: 0 auto 3.5rem;
+    }
+    .path-tab {
+      flex: 1;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: calc(var(--radius-lg) - 4px);
+      background: transparent;
+      font-family: var(--font-primary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .path-tab.active {
+      background: var(--primary-color);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .path-tab:not(.active):hover {
+      color: var(--primary-color);
+    }
+
+    /* ── Path panels ── */
+    .path-panel { display: none; }
+    .path-panel.active { display: block; }
+
+    /* ── Section divider ── */
+    .section-divider {
+      border: none;
+      border-top: 1.5px solid var(--border-color);
+      margin: 3rem 0;
+    }
+
+    /* ── Role card (timeline-item style + flex) ── */
+    .role-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--bg-light);
+      padding: 1.6rem 2rem;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--primary-color);
+      margin-bottom: 1rem;
+      transition: all 0.25s ease;
+    }
+    .role-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-md);
+      background: var(--bg-white);
+    }
+    .role-card-info { flex: 1; }
+    .role-card-info .role-type {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+    .role-card-info h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+    .role-card-info p  { margin: 0; font-size: 0.92rem; }
+    .role-card .btn    { flex-shrink: 0; padding: 0.55rem 1.4rem; font-size: 0.9rem; }
+
+    /* ── Track cards (intern streams) ── */
+    .track-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .track-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(74,144,226,0.15);
+      border-color: var(--primary-color);
+    }
+    .track-card img { width: 100%; height: 190px; object-fit: cover; display: block; }
+    .track-card-body { padding: 1.5rem; background: var(--bg-white); }
+    .track-card-body h3 { margin-bottom: 0.75rem; font-size: 1.1rem; }
+    .track-card-body ul {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .track-card-body ul li {
+      padding: 0.3rem 0;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .track-card-body ul li:last-child { border-bottom: none; }
+    .track-card-body ul li::before {
+      content: "→ ";
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    /* ── Apply box ── */
+    .apply-steps {
+      list-style: none;
+      padding: 0; margin: 1.5rem 0 0;
+      counter-reset: steps;
+    }
+    .apply-steps li {
+      counter-increment: steps;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+    .apply-steps li::before {
+      content: counter(steps);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .apply-steps li strong { display: block; color: var(--text-dark); margin-bottom: 0.15rem; }
+    .apply-steps li p { margin: 0; font-size: 0.93rem; }
+
+    /* ── Duration pills ── */
+    .duration-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .duration-pill {
+      background: var(--bg-white);
+      border: 1.5px solid var(--primary-color);
+      color: var(--primary-color);
+      border-radius: 999px;
+      padding: 0.45rem 1.2rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    /* ── Values grid ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .value-item {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.4rem 1.6rem;
+      transition: all 0.3s ease;
+    }
+    .value-item:hover {
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .value-item .value-word {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .value-item p { margin: 0; font-size: 0.9rem; }
+
+    /* ── Offer grid ── */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .offer-item {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .offer-item:hover {
+      background: var(--bg-white);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-sm);
+    }
+    .offer-item .offer-icon { font-size: 1.8rem; display: block; margin-bottom: 0.5rem; }
+    .offer-item strong { display: block; font-size: 0.92rem; color: var(--text-dark); margin-bottom: 0.2rem; }
+    .offer-item p { margin: 0; font-size: 0.82rem; }
+
+    /* ── Inline highlight tag ── */
+    .tag {
+      display: inline-block;
+      background: rgba(74,144,226,0.1);
+      color: var(--primary-color);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* ── Footer extras (from actual footer used in source pages) ── */
+    .footer-script {
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-col-heading {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+    .footer-legal-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-legal-links a {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-legal-links a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      .path-tabs { max-width: 100%; }
+      .role-card { flex-direction: column; align-items: flex-start; }
+      .role-card .btn { width: 100%; text-align: center; }
+      .duration-row { gap: 0.6rem; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <a href="index.html">Kowid</a>
-            </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="logo"><a href="index.html">Kowid</a></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="problem.html">The Problem</a></li>
-                <li><a href="solution.html">Our Direction</a></li>
                 <li><a href="founders.html">Founders</a></li>
-                <li><a href="careers.html" class="active">Careers</a></li>
-                <li><a href="interns.html">Interns</a></li>
+                <li><a href="careers.html" class="active">Join Us</a></li>
+                <li><a href="feedback.html">Product Feedback</a></li>
                 <li><a href="contact.html" class="nav-cta">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="page-header" style="background-image: linear-gradient(rgba(232, 244, 248, 0.9), rgba(248, 249, 250, 0.9)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=400&fit=crop&q=80'); background-size: cover; background-position: center;">
-        <div class="container">
-            <h1>Careers: Build With Us</h1>
-            <p>Join Kowid. Build something that matters.</p>
-        </div>
+      </ul>
     </div>
+  </nav>
 
-    <section class="content-section">
-        <div class="container">
-            <h2 style="text-align: center;">Join Kowid. Build Something That Matters.</h2>
-            <p style="text-align: center; font-size: 1.2rem; max-width: 700px; margin: 0 auto 3rem;">Early-stage. Messy. Rewarding. Not for everyone—but maybe for you.</p>
+  <!-- Page Header -->
+  <div class="page-header" style="background-image:linear-gradient(rgba(232,244,248,0.88),rgba(248,249,250,0.88)),url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=400&fit=crop&q=80');background-size:cover;background-position:center;">
+    <div class="container">
+      <h1 class="animate-on-scroll fade-up">Join Kowid</h1>
+      <p class="animate-on-scroll fade-up stagger-1">
+        Full-time roles &amp; internships for people who want to build something that genuinely matters.
+      </p>
+    </div>
+  </div>
 
-            <div class="cards-grid" style="margin: 3rem 0;">
-                <div class="card">
-                    <h3>🚧 We're Early. Really Early.</h3>
-                    <p>No polished office, no clear roadmap. You'll figure things out as much as execute them.</p>
-                </div>
+  <!-- ── Shared intro ── -->
+  <section class="content-section content-section--white">
+    <div class="container">
 
-                <div class="card">
-                    <h3>👔 You'll Wear Many Hats</h3>
-                    <p>Research, prototype, pitch—all in one day. Things outside your job description? That's the norm.</p>
-                </div>
-
-                <div class="card">
-                    <h3>💡 Your Ideas Shape the Product</h3>
-                    <p>We're building the vision together. Your insights directly influence what we become.</p>
-                </div>
-
-                <div class="card">
-                    <h3>📈 You'll Learn Fast</h3>
-                    <p>Experience in months that might take years elsewhere. Fail, iterate, grow faster than you imagined.</p>
-                </div>
-
-                <div class="card">
-                    <h3>❤️ You'll Work With People Who Care</h3>
-                    <p>Everyone here could be doing something easier. We're here because education matters.</p>
-                </div>
-            </div>
-
-            <h2>What We Value</h2>
-            <div class="highlight-box">
-                <div class="feature-list">
-                    <div class="feature-item"><strong>Curiosity</strong> – You ask "why?" and "what if?"</div>
-                    <div class="feature-item"><strong>Ownership</strong> – You don't wait to be told what to do</div>
-                    <div class="feature-item"><strong>Resilience</strong> – You handle ambiguity and setbacks with grace</div>
-                    <div class="feature-item"><strong>Empathy</strong> – You care about the people we're building for</div>
-                    <div class="feature-item"><strong>Humility</strong> – You listen, learn, and stay open to being wrong</div>
-                    <div class="feature-item"><strong>Execution</strong> – You ship, even when it's imperfect</div>
-                </div>
-            </div>
-
-            <h2>Roles We're Building Toward</h2>
-            <div class="two-column-grid">
-                <div class="card">
-                    <h3>Product Manager</h3>
-                    <p>Education-focused, user research expertise</p>
-                </div>
-                <div class="card">
-                    <h3>Full-Stack Engineer</h3>
-                    <p>Building scalable, accessible platforms</p>
-                </div>
-                <div class="card">
-                    <h3>Learning Experience Designer</h3>
-                    <p>Creating engaging educational content</p>
-                </div>
-                <div class="card">
-                    <h3>Curriculum Specialist</h3>
-                    <p>Expert in foundational literacy & numeracy</p>
-                </div>
-                <div class="card">
-                    <h3>Data Scientist / ML Engineer</h3>
-                    <p>Building adaptive learning systems</p>
-                </div>
-                <div class="card">
-                    <h3>Partnerships & Growth Lead</h3>
-                    <p>Building relationships with schools, orgs</p>
-                </div>
-            </div>
-
-            <h2>What We Offer</h2>
-            <p>We're honest: we can't compete with big tech on salary—yet. But we offer:</p>
-            <ul>
-                <li>Equity and ownership in what we're building</li>
-                <li>Flexibility and autonomy</li>
-                <li>Direct impact on a mission that matters</li>
-                <li>A culture of learning and growth</li>
-                <li>The chance to build something from the ground up</li>
-            </ul>
-
-            <div class="cta-section" style="margin-top: 4rem; padding: 3rem 0;">
-                <div class="cta-content">
-                    <h2>Interested?</h2>
-                    <p>If this sounds like the kind of challenge you're looking for, reach out.</p>
-                    <p>Send us your story at <a href="mailto:careers@kowid.in" style="color: white; text-decoration: underline;">careers@kowid.in</a></p>
-                    <ul style="text-align: left; max-width: 500px; margin: 1rem auto; color: rgba(255,255,255,0.9);">
-                        <li>What excites you about Kowid</li>
-                        <li>What you'd bring to the team</li>
-                        <li>What you hope to learn</li>
-                    </ul>
-                    <p style="margin-top: 1.5rem;">We're looking for builders. Let's see if we're a fit.</p>
-                </div>
-            </div>
+      <!-- The hook -->
+      <div class="animate-on-scroll fade-up">
+        <div>
+          <h2>Early-stage. Messy. Rewarding.</h2>
+          <p style="font-size:1.05rem;">We're building Kowid at a time when foundational learning in India needs fixing the most. Every person who joins—full-time or as an intern—shapes what we become.</p>
+          <p>We don't have a perfectly defined playbook. What we do have is a clear mission, a team that cares deeply, and the conviction that the right people will figure it out together.</p>
+          <p style="margin:0;">If that sounds like a place you want to be, read on.</p>
+          <br>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Kowid</h4>
-                    <p>Building the future of foundational learning in India.</p>
-                    <p class="footer-tagline">कोविद् - Learned</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Explore</h4>
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="problem.html">The Problem</a></li>
-                        <li><a href="solution.html">Our Direction</a></li>
-                        <li><a href="founders.html">Founders</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Get Involved</h4>
-                    <ul>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="interns.html">Interns</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="mailto:hello@kowid.in">hello@kowid.in</a></li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">in</a>
-                        <a href="#" aria-label="Twitter">𝕏</a>
-                        <a href="#" aria-label="Instagram">ig</a>
-                    </div>
-                </div>
+        <div>
+          <div class="cards-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin:0;">
+            <div class="card animate-on-scroll fade-up stagger-1">
+              <div class="card-icon">👔</div>
+              <h3 style="font-size:0.95rem;">Many Hats</h3>
+              <p style="font-size:0.85rem;">Research, prototype, pitch — all in one day.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Kowid. All rights reserved.</p>
+            <div class="card animate-on-scroll fade-up stagger-2">
+              <div class="card-icon">💡</div>
+              <h3 style="font-size:0.95rem;">Real Ownership</h3>
+              <p style="font-size:0.85rem;">Your ideas directly shape the product.</p>
             </div>
+            <div class="card animate-on-scroll fade-up stagger-3">
+              <div class="card-icon">📈</div>
+              <h3 style="font-size:0.95rem;">Learn Fast</h3>
+              <p style="font-size:0.85rem;">Grow more in months than years elsewhere.</p>
+            </div>
+            <div class="card animate-on-scroll fade-up stagger-4">
+              <div class="card-icon">❤️</div>
+              <h3 style="font-size:0.95rem;">People Who Care</h3>
+              <p style="font-size:0.85rem;">Everyone here could be doing something easier.</p>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <script src="script.js"></script>
+      <hr class="section-divider">
+
+      <!-- What We Value -->
+      <h2 class="animate-on-scroll fade-up" style="text-align:center;">What We Value</h2>
+      <p style="text-align:center;margin-bottom:0;" class="animate-on-scroll fade-up stagger-1">These aren't posters on a wall — they're how we actually work.</p>
+      <div class="values-grid">
+        <div class="value-item animate-on-scroll fade-up stagger-1">
+          <span class="value-word">Curiosity</span>
+          <p>You ask "why?" and "what if?" — and then go find out.</p>
+        </div>
+        <div class="value-item animate-on-scroll fade-up stagger-2">
+          <span class="value-word">Ownership</span>
+          <p>You don't wait to be told. You see a problem and you fix it.</p>
+        </div>
+        <div class="value-item animate-on-scroll fade-up stagger-3">
+          <span class="value-word">Resilience</span>
+          <p>You handle ambiguity and setbacks without losing momentum.</p>
+        </div>
+        <div class="value-item animate-on-scroll fade-up stagger-4">
+          <span class="value-word">Empathy</span>
+          <p>You genuinely care about the children and teachers we're building for.</p>
+        </div>
+        <div class="value-item animate-on-scroll fade-up stagger-5">
+          <span class="value-word">Humility</span>
+          <p>You listen, stay open to being wrong, and keep learning.</p>
+        </div>
+        <div class="value-item animate-on-scroll fade-up stagger-6">
+          <span class="value-word">Execution</span>
+          <p>You ship — even when it's imperfect. Progress over perfection.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Path Selector -->
+      <h2 class="animate-on-scroll fade-up" style="text-align:center;">Choose Your Path</h2>
+      <p style="text-align:center;margin-bottom:2rem;" class="animate-on-scroll fade-up stagger-1">Same mission, different entry points.</p>
+
+      <div class="path-tabs animate-on-scroll scale-in">
+        <button class="path-tab active" onclick="switchTab('careers', this)">💼 Full-Time Roles</button>
+        <button class="path-tab" onclick="switchTab('interns', this)">🎓 Internships</button>
+      </div>
+
+      <!-- ══════════ CAREERS PANEL ══════════ -->
+      <div class="path-panel active" id="panel-careers">
+
+        <p style="text-align:center;max-width:600px;margin:0 auto 2.5rem;" class="animate-on-scroll fade-up">
+          We're building our core team with intention — small, sharp, and mission-aligned. Here's where we're growing:
+        </p>
+
+        <div class="two-column-grid animate-on-scroll fade-up stagger-1">
+          <div class="role-card">
+            <div class="role-card-info">
+              <p class="role-type">Product</p>
+              <h3>Product Manager</h3>
+              <p>Education-focused, deep user research experience, comfortable with ambiguity.</p>
+            </div>
+            <a href="mailto:careers@kowid.in?subject=Application — Product Manager" class="btn btn-primary">Apply</a>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-info">
+              <p class="role-type">Engineering</p>
+              <h3>Full-Stack Developer</h3>
+              <p>Building scalable, accessible platforms for students and teachers across India.</p>
+            </div>
+            <a href="mailto:careers@kowid.in?subject=Application — Full-Stack Developer" class="btn btn-primary">Apply</a>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-info">
+              <p class="role-type">Design · Learning</p>
+              <h3>Learning Experience Designer</h3>
+              <p>Creating engaging, culturally relevant educational content for foundational learners.</p>
+            </div>
+            <a href="mailto:careers@kowid.in?subject=Application — LXD" class="btn btn-primary">Apply</a>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-info">
+              <p class="role-type">Curriculum</p>
+              <h3>Curriculum Specialist</h3>
+              <p>Expert in foundational literacy &amp; numeracy with classroom or research experience.</p>
+            </div>
+            <a href="mailto:careers@kowid.in?subject=Application — Curriculum Specialist" class="btn btn-primary">Apply</a>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-info">
+              <p class="role-type">Data · ML</p>
+              <h3>Data Scientist / ML Engineer</h3>
+              <p>Building adaptive learning systems that personalise at scale.</p>
+            </div>
+            <a href="mailto:careers@kowid.in?subject=Application — Data Scientist" class="btn btn-primary">Apply</a>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-info">
+              <p class="role-type">Growth · Partnerships</p>
+              <h3>Partnerships &amp; Growth Lead</h3>
+              <p>Building relationships with schools, NGOs, and government bodies across India.</p>
+            </div>
+            <a href="mailto:careers@kowid.in?subject=Application — Partnerships Lead" class="btn btn-primary">Apply</a>
+          </div>
+        </div>
+
+        <div class="highlight-box animate-on-scroll fade-up" style="margin-top:2rem;">
+          <p style="margin:0;">Don't see your role? We review open applications. Send us your story anyway — we're always looking for exceptional people, regardless of the title.</p>
+        </div>
+
+        <!-- What we offer — careers -->
+        <h2 style="margin-top:3rem;" class="animate-on-scroll fade-up">What We Offer</h2>
+        <p class="animate-on-scroll fade-up stagger-1">We can't compete with big tech on salary — yet. But what we offer is hard to find anywhere else:</p>
+        <div class="offer-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="offer-item animate-on-scroll fade-up stagger-1">
+            <span class="offer-icon">📈</span>
+            <strong>Equity &amp; ESOPs</strong>
+            <p>Ownership in what we're building together.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-2">
+            <span class="offer-icon">🏠</span>
+            <strong>Flexible &amp; Remote</strong>
+            <p>Work where and when you do your best thinking.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-3">
+            <span class="offer-icon">🎯</span>
+            <strong>Direct Impact</strong>
+            <p>See the change your work creates — for real children.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-4">
+            <span class="offer-icon">📚</span>
+            <strong>Learning Budget</strong>
+            <p>Books, courses, and conferences covered.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-5">
+            <span class="offer-icon">🚀</span>
+            <strong>Ground Floor</strong>
+            <p>Build the company's culture, processes, and product from scratch.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-6">
+            <span class="offer-icon">🤝</span>
+            <strong>Founder Access</strong>
+            <p>Direct line to leadership — no layers, no politics.</p>
+          </div>
+        </div>
+
+        <!-- How to apply — careers -->
+        <h2 style="margin-top:3rem;" class="animate-on-scroll fade-up">How to Apply</h2>
+        <div class="highlight-box animate-on-scroll fade-up stagger-1">
+          <p>Send your story to <a href="mailto:careers@kowid.in" style="color:var(--primary-color);font-weight:700;">careers@kowid.in</a> — no formal cover letter needed. Just tell us:</p>
+          <ol class="apply-steps" style="margin-top:1rem;">
+            <li>
+              <div>
+                <strong>What excites you about Kowid</strong>
+                <p>Be specific — generic enthusiasm doesn't tell us much.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>What you'd bring to the team</strong>
+                <p>Skills, experiences, perspectives — whatever feels most relevant.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Your resume + any relevant work</strong>
+                <p>GitHub, portfolio, a paper you're proud of — whatever shows us you.</p>
+              </div>
+            </li>
+          </ol>
+          <p style="margin:0;font-size:0.9rem;">We respond to every genuine application within 7 days.</p>
+        </div>
+
+      </div><!-- /panel-careers -->
+
+      <!-- ══════════ INTERNS PANEL ══════════ -->
+      <div class="path-panel" id="panel-interns">
+
+        <p style="text-align:center;max-width:640px;margin:0 auto 2.5rem;" class="animate-on-scroll fade-up">
+          Our interns aren't just helping — they're co-creating. If you're a student or recent graduate who cares about education, this is where you belong.
+        </p>
+
+        <!-- Intern tracks -->
+        <h2 class="animate-on-scroll fade-up">Where You'd Work</h2>
+        <div class="cards-grid" style="margin-top:1.5rem;">
+
+          <div class="track-card animate-on-scroll fade-up stagger-1">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=190&fit=crop&q=80" alt="Research">
+            <div class="track-card-body">
+              <h3>🔬 Research &amp; Analysis</h3>
+              <ul>
+                <li>User research with teachers &amp; students</li>
+                <li>Learning data analysis &amp; trends</li>
+                <li>EdTech competitive landscape</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="track-card animate-on-scroll fade-up stagger-2">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=190&fit=crop&q=80" alt="Design">
+            <div class="track-card-body">
+              <h3>🎨 Design &amp; Prototyping</h3>
+              <ul>
+                <li>Wireframes and user flows</li>
+                <li>Feature prototyping &amp; concept testing</li>
+                <li>Visual content &amp; brand materials</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="track-card animate-on-scroll fade-up stagger-3">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=190&fit=crop&q=80" alt="Content">
+            <div class="track-card-body">
+              <h3>✍️ Content &amp; Communication</h3>
+              <ul>
+                <li>Case studies, blog posts &amp; copy</li>
+                <li>Curriculum idea development</li>
+                <li>Social media &amp; outreach support</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="track-card animate-on-scroll fade-up stagger-4">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=190&fit=crop&q=80" alt="Strategy">
+            <div class="track-card-body">
+              <h3>🤝 Partnerships &amp; Strategy</h3>
+              <ul>
+                <li>School and NGO partner outreach</li>
+                <li>Product strategy contributions</li>
+                <li>Roadmap &amp; research support</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Who we're looking for -->
+        <div class="two-column-grid two-column-grid--centered">
+          <div class="animate-on-scroll fade-left">
+            <h2>Who We're Looking For</h2>
+            <p>We welcome interns from engineering, design, education, social sciences, business, and beyond. The background matters less than the attitude.</p>
+            <!-- feature-list: CSS ::before auto-adds ✓ -->
+            <div class="feature-list">
+              <div class="feature-item">Students or recent graduates passionate about education &amp; tech</div>
+              <div class="feature-item">Curious learners who ask great questions — and then go find answers</div>
+              <div class="feature-item">Self-starters who take initiative without being told</div>
+              <div class="feature-item">Empathetic thinkers who genuinely care about social impact</div>
+              <div class="feature-item">Collaborative players who share knowledge generously</div>
+              <div class="feature-item">Committed contributors — 10–20 hours per week minimum</div>
+            </div>
+          </div>
+          <div class="animate-on-scroll fade-right">
+            <h2>What You'll Learn</h2>
+            <div class="feature-list">
+              <div class="feature-item">How early-stage startups operate from the inside</div>
+              <div class="feature-item">User research and product discovery methods</div>
+              <div class="feature-item">Education technology and learning science</div>
+              <div class="feature-item">How to turn messy insights into clear action</div>
+              <div class="feature-item">Cross-functional collaboration at speed</div>
+              <div class="feature-item">Real-world problem-solving in complex domains</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- What we offer — interns -->
+        <h2 class="animate-on-scroll fade-up">What We Offer</h2>
+        <div class="offer-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="offer-item animate-on-scroll fade-up stagger-1">
+            <span class="offer-icon">💼</span>
+            <strong>Real Responsibility</strong>
+            <p>Your work ships to real users — not just a slide deck.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-2">
+            <span class="offer-icon">🧠</span>
+            <strong>Mentorship</strong>
+            <p>Learn from experienced founders and collaborators directly.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-3">
+            <span class="offer-icon">💰</span>
+            <strong>Stipend</strong>
+            <p>Modest financial support based on your contribution level.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-4">
+            <span class="offer-icon">📄</span>
+            <strong>Certificate &amp; LOR</strong>
+            <p>Detailed letter of recommendation for strong performers.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-5">
+            <span class="offer-icon">🏠</span>
+            <strong>Remote-Friendly</strong>
+            <p>Flexible hours, async-first, work from anywhere.</p>
+          </div>
+          <div class="offer-item animate-on-scroll fade-up stagger-6">
+            <span class="offer-icon">⭐</span>
+            <strong>Path to Full-Time</strong>
+            <p>Top performers may join the core team.</p>
+          </div>
+        </div>
+
+        <!-- Duration -->
+        <div class="highlight-box animate-on-scroll fade-up" style="margin-top:2rem;">
+          <h3 style="color:var(--text-dark);margin-bottom:0.5rem;">Duration</h3>
+          <p style="margin-bottom:0.75rem;">Internships typically run 2–6 months with the possibility of extension. Discuss your preferred timeline when you apply.</p>
+          <div class="duration-row">
+            <span class="duration-pill">4 Weeks — Sprint</span>
+            <span class="duration-pill">2 Months — Standard</span>
+            <span class="duration-pill">3–6 Months — Deep Dive</span>
+          </div>
+        </div>
+
+        <!-- Our Expectations -->
+        <h2 style="margin-top:2.5rem;" class="animate-on-scroll fade-up">Our Expectations</h2>
+        <div class="highlight-box animate-on-scroll fade-up stagger-1">
+          <div class="feature-list">
+            <div class="feature-item">Commit to agreed hours and show up consistently</div>
+            <div class="feature-item">Communicate proactively — share blockers early, not late</div>
+            <div class="feature-item">Treat this like a real job, because it is one</div>
+            <div class="feature-item">Be open to feedback and iterate quickly</div>
+            <div class="feature-item">Respect the mission and the team around you</div>
+          </div>
+        </div>
+
+        <!-- How to apply — interns -->
+        <h2 style="margin-top:2.5rem;" class="animate-on-scroll fade-up">How to Apply</h2>
+        <p class="animate-on-scroll fade-up stagger-1">
+          Send the following to <a href="mailto:interns@kowid.in" style="color:var(--primary-color);font-weight:700;">interns@kowid.in</a>
+        </p>
+        <div class="highlight-box animate-on-scroll fade-up stagger-2">
+          <ol class="apply-steps">
+            <li>
+              <div>
+                <strong>Your resume or CV</strong>
+                <p>Keep it honest — we care about trajectory, not just credentials.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>A short note (200–300 words)</strong>
+                <p>Why Kowid? What skills or perspective do you bring? What do you hope to learn?</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Any relevant work samples <span class="tag">optional</span></strong>
+                <p>GitHub, portfolio, a project you're proud of. Quality beats quantity.</p>
+              </div>
+            </li>
+          </ol>
+          <p style="margin:0;font-size:0.9rem;"><strong>Rolling applications:</strong> We review on a rolling basis — apply anytime. We respond to every genuine application.</p>
+        </div>
+
+      </div><!-- /panel-interns -->
+
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content animate-on-scroll scale-in">
+        <h2>Not sure which path fits?</h2>
+        <p>Just reach out. We'll figure it out together.</p>
+        <div class="cta-buttons">
+          <a href="mailto:careers@kowid.in" class="btn btn-white">careers@kowid.in</a>
+          <a href="mailto:interns@kowid.in" class="btn btn-white">interns@kowid.in</a>
+          <a href="contact.html" class="btn btn-primary">Contact Page</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Kowid</h4>
+          <p class="footer-script">कोविद् · Learned</p>
+          <p>Building the future of foundational learning in India — one child at a time.</p>
+          <div class="social-links">
+            <a href="https://in.linkedin.com/company/kowid-edtech" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+            <a href="https://twitter.com/kowid_edtech" aria-label="Twitter" target="_blank" rel="noopener">𝕏</a>
+            <a href="https://instagram.com/kowid_edtech" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5 class="footer-col-heading">Explore</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="problem.html">The Problem</a></li>
+            <li><a href="founders.html">Founders</a></li>
+          </ul>
+          <br>
+          <h5 class="footer-col-heading">Get Involved</h5>
+          <ul>
+            <li><a href="careers.html">Careers &amp; Internships</a></li>
+            <li><a href="feedback.html">Product Feedback</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 class="footer-col-heading">Contact</h5>
+          <ul>
+            <li><a href="mailto:info@kowid.com">info@kowid.com</a></li>
+            <li><a href="tel:+919890930707">+91 98909 30707</a></li>
+            <li><span><b>Branch Office:</b> 212, Corner Stone, Anupam Nagar, Kalyan West, Thane, Maharashtra. PIN: 421301</span></li>
+            <li><span><b>Head Office:</b> 1301, B-1, Opal, Yogidham Phase 3, Kalyan West, Thane, Maharashtra. PIN: 421301</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container" style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding-top:1.5rem;">
+        <p><b>GSTIN:</b> 27AAMCK1220F1ZU &nbsp;·&nbsp; <b>CIN:</b> U85500MH2025PTC455171 &nbsp;·&nbsp; © All rights reserved with Kowid EdTech Solutions Private Limited</p>
+        <div class="footer-legal-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
 </body>
 </html>

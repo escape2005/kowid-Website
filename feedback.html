@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Share your feedback on Kowid — help us build better learning tools for every child in India.">
+  <title>Share Feedback - Kowid</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="logo"><a href="index.html">Kowid</a></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="problem.html">The Problem</a></li>
+                <li><a href="founders.html">Founders</a></li>
+                <li><a href="careers.html">Join Us</a></li>
+                <li><a href="feedback.html" class="active">Product Feedback</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="animate-on-scroll fade-up">Share Your Feedback</h1>
+      <p class="animate-on-scroll fade-up stagger-1">
+        You've used Kowid. Help us make it better — for you, and for every child we reach.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <section class="content-section">
+    <div class="container">
+      <div class="feedback-layout">
+
+        <!-- ── Left: Feedback Form ── -->
+        <div>
+
+          <!-- Success card (shown on submit) -->
+          <div class="success-card" id="successCard">
+            <span class="success-icon">🎉</span>
+            <h2>Thank you!</h2>
+            <p>Your feedback means the world to us. Every response helps us build better learning tools for children across India.</p>
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
+          </div>
+
+          <!-- Feedback Form -->
+          <form id="feedbackForm" novalidate>
+
+            <!-- 1. Who are you? -->
+            <div class="form-section animate-on-scroll fade-up stagger-1">
+              <h3>Who are you?</h3>
+              <p class="form-hint">Helps us understand the context of your feedback</p>
+              <div class="pill-group">
+                <input type="radio" name="role" id="role-teacher" value="Teacher">
+                <label for="role-teacher">👩‍🏫 Teacher</label>
+
+                <input type="radio" name="role" id="role-parent" value="Parent">
+                <label for="role-parent">👨‍👩‍👧 Parent</label>
+
+                <input type="radio" name="role" id="role-student" value="Student">
+                <label for="role-student">🎒 Student</label>
+
+                <input type="radio" name="role" id="role-principal" value="School Admin">
+                <label for="role-principal">🏫 School Admin</label>
+
+                <input type="radio" name="role" id="role-ngo" value="NGO / Educator">
+                <label for="role-ngo">🤝 NGO / Educator</label>
+
+                <input type="radio" name="role" id="role-other" value="Other">
+                <label for="role-other">Other</label>
+              </div>
+            </div>
+
+            <!-- 2. Which feature did you use? -->
+            <div class="form-section animate-on-scroll fade-up stagger-2">
+              <h3>Which part of Kowid did you use?</h3>
+              <p class="form-hint">Select all that apply</p>
+              <div class="pill-group">
+                <input type="checkbox" name="feature" id="feat-assessment" value="Assessment Tool">
+                <label for="feat-assessment">📋 Assessment Tool</label>
+
+                <input type="checkbox" name="feature" id="feat-learning" value="Learning Paths">
+                <label for="feat-learning">🗺️ Learning Paths</label>
+
+                <input type="checkbox" name="feature" id="feat-reports" value="Progress Reports">
+                <label for="feat-reports">📊 Progress Reports</label>
+
+                <input type="checkbox" name="feature" id="feat-content" value="Content Library">
+                <label for="feat-content">📚 Content Library</label>
+
+                <input type="checkbox" name="feature" id="feat-dashboard" value="Teacher Dashboard">
+                <label for="feat-dashboard">🖥️ Teacher Dashboard</label>
+              </div>
+            </div>
+
+            <!-- 3. Overall rating -->
+            <div class="form-section animate-on-scroll fade-up stagger-3">
+              <h3>Overall, how would you rate your experience?</h3>
+              <p class="form-hint">1 = Very poor &nbsp;·&nbsp; 5 = Excellent</p>
+              <div class="star-group">
+                <input type="radio" name="rating" id="star5" value="5"><label for="star5" title="Excellent">★</label>
+                <input type="radio" name="rating" id="star4" value="4"><label for="star4" title="Good">★</label>
+                <input type="radio" name="rating" id="star3" value="3"><label for="star3" title="Okay">★</label>
+                <input type="radio" name="rating" id="star2" value="2"><label for="star2" title="Poor">★</label>
+                <input type="radio" name="rating" id="star1" value="1"><label for="star1" title="Very poor">★</label>
+              </div>
+            </div>
+
+            <!-- 4. What worked well? -->
+            <div class="form-section animate-on-scroll fade-up stagger-4">
+              <h3>What worked well? ✅</h3>
+              <p class="form-hint">Tell us what you liked — we want to keep doing more of it.</p>
+              <textarea class="field-textarea" id="whatWorked" name="whatWorked"
+                        placeholder="e.g. The learning paths felt personalised, the interface was easy to navigate…"
+                        maxlength="600" rows="4"></textarea>
+              <p class="char-counter"><span id="workedCount">0</span> / 600</p>
+            </div>
+
+            <!-- 5. What needs improvement? -->
+            <div class="form-section animate-on-scroll fade-up stagger-5">
+              <h3>What needs improvement? 🔧</h3>
+              <p class="form-hint">Be honest — this is exactly how we get better.</p>
+              <textarea class="field-textarea" id="improvements" name="improvements"
+                        placeholder="e.g. The reports were hard to read on mobile, I couldn't find the Hindi content…"
+                        maxlength="600" rows="4"></textarea>
+              <p class="char-counter"><span id="improvCount">0</span> / 600</p>
+            </div>
+
+            <!-- 6. NPS -->
+            <div class="form-section animate-on-scroll fade-up stagger-6">
+              <h3>How likely are you to recommend Kowid to a colleague?</h3>
+              <p class="form-hint">0 = Not at all likely &nbsp;·&nbsp; 10 = Extremely likely</p>
+              <div class="nps-scale">
+                <input type="radio" name="nps" id="nps0" value="0"><label for="nps0">0</label>
+                <input type="radio" name="nps" id="nps1" value="1"><label for="nps1">1</label>
+                <input type="radio" name="nps" id="nps2" value="2"><label for="nps2">2</label>
+                <input type="radio" name="nps" id="nps3" value="3"><label for="nps3">3</label>
+                <input type="radio" name="nps" id="nps4" value="4"><label for="nps4">4</label>
+                <input type="radio" name="nps" id="nps5" value="5"><label for="nps5">5</label>
+                <input type="radio" name="nps" id="nps6" value="6"><label for="nps6">6</label>
+                <input type="radio" name="nps" id="nps7" value="7"><label for="nps7">7</label>
+                <input type="radio" name="nps" id="nps8" value="8"><label for="nps8">8</label>
+                <input type="radio" name="nps" id="nps9" value="9"><label for="nps9">9</label>
+                <input type="radio" name="nps" id="nps10" value="10"><label for="nps10">10</label>
+              </div>
+              <div class="nps-labels">
+                <span>Not likely</span>
+                <span>Extremely likely</span>
+              </div>
+            </div>
+
+            <!-- 7. One thing to change -->
+            <div class="form-section animate-on-scroll fade-up">
+              <h3>If you could change one thing about Kowid, what would it be?</h3>
+              <p class="form-hint">Optional — but these answers are gold for our product team.</p>
+              <textarea class="field-textarea" id="oneChange" name="oneChange"
+                        placeholder="e.g. I'd love offline support so teachers in low-connectivity areas can use it…"
+                        maxlength="400" rows="3"></textarea>
+              <p class="char-counter"><span id="changeCount">0</span> / 400</p>
+            </div>
+
+            <!-- 8. Contact (optional) -->
+            <div class="form-section animate-on-scroll fade-up">
+              <h3>Can we follow up with you? <span style="font-weight:400;color:var(--text-light);"></span></h3>
+              <p class="form-hint">We'd love to learn more about your experience in a quick call.</p>
+              <input type="text" class="field-input" id="name" name="name"
+                     placeholder="Your name" style="margin-bottom:0.75rem;">
+              <input type="email" class="field-input" id="email" name="email"
+                     placeholder="Your email address">
+            </div>
+
+            <!-- Submit -->
+            <div class="animate-on-scroll fade-up">
+              <button type="submit" class="btn btn-primary btn-submit">
+                Submit Feedback →
+              </button>
+              <p style="text-align:center;font-size:0.82rem;margin-top:0.75rem;">
+                Your responses are confidential and used only to improve Kowid.
+              </p>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- ── Right: Sidebar ── -->
+        <aside class="feedback-sidebar animate-on-scroll fade-right">
+
+          <!-- Why your feedback matters -->
+          <div class="highlight-box" style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--text-dark);margin-bottom:0.5rem;">Why this matters</h3>
+            <p style="margin-bottom:0;">Every response directly shapes what we build next. We read every single one — no algorithms, no summaries.</p>
+          </div>
+
+          <!-- Stats -->
+          <div class="stat-box">
+            <span class="stat-num">2 min</span>
+            <p>Average time to complete</p>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">100%</span>
+            <p>Responses read by the team</p>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">🇮🇳</span>
+            <p>Building for India, with India</p>
+          </div>
+
+          <!-- What happens next -->
+          <div class="overview-item" style="margin-top:1.5rem;">
+            <h3>What happens next?</h3>
+            <p style="font-size:0.9rem;margin-bottom:0.4rem;">We review responses every week in our team meeting.</p>
+            <p style="font-size:0.9rem;margin-bottom:0.4rem;">Top themes go straight into our product roadmap.</p>
+            <p style="font-size:0.9rem;margin:0;">If you left your email, expect a note from us within a week.</p>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Have more to say?</h2>
+        <p>Reach out directly — we're always happy to chat.</p>
+        <div class="cta-buttons">
+          <a href="mailto:info@kowid.com" class="btn btn-white">info@kowid.com</a>
+          <a href="contact.html" class="btn btn-primary">Contact Page</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand col -->
+      <div class="footer-col footer-brand">
+        <h4 class="footer-logo">Kowid</h4>
+        <p class="footer-script">कोविद् · Learned</p>
+        <p>Building the future of foundational learning in India — one child at a time.</p>
+        <div class="social-links">
+          <a href="https://in.linkedin.com/company/kowid-edtech" aria-label="LinkedIn">in</a>
+          <a href="https://twitter.com/kowid_edtech" aria-label="Twitter">𝕏</a>
+          <a href="https://instagram.com/kowid_edtech" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+
+      <!-- Explore col -->
+      <div class="footer-col">
+        <h5 class="footer-col-heading">Explore</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="problem.html">The Problem</a></li>
+          <li><a href="founders.html">Founders</a></li>
+        </ul>
+        <br><h5 class="footer-col-heading">Get Involved</h5>
+        <ul>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="feedback.html">Product Feedback</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact col -->
+      <div class="footer-col">
+        <h5 class="footer-col-heading">Contact</h5>
+        <ul>
+          <li><a href="mailto:info@kowid.com">info@kowid.com</a></li>
+          <li><a href="tel:+919890930707">+91 98909 30707</a></li>
+          <li><span><b>Branch Office:</b> 212, Corner Stone, Anupam Nagar, Kalyan West, Thane, Maharashtra, India. <br>PIN Code : 421301</span></li>
+          <li><span><b>Head Office:</b> 1301, B-1, Opal, Yogidham Phase 3, Kalyan West, Thane, Maharashtra, India. <br>PIN Code : 421301</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+      <p><b>GSTIN :</b> 27AAMCK1220F1ZU <b>CIN :</b> U85500MH2025PTC455171  © All rights reserved with Kowid EdTech Solutions Private Limited</p>
+      <div class="footer-legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+      <a href="#heroSection" class="back-to-top" aria-label="Back to top">↑</a>
+    </div>
+  </div>
+</footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

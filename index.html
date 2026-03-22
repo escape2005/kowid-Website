@@ -11,9 +11,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+<body data-page="home">
+    <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ── Cinematic Full-Screen Hero ── -->
+  <section class="hero-full" id="heroSection">
+
+    <!-- Background image (Ken Burns handled by JS adding .loaded) -->
+    <div class="hero-full__bg" id="heroBg">
+        <img src="https://idronline.org/wp-content/uploads/2020/12/girl-reading-texbook-pxhere-copy.jpg.webp" alt="Background image">
+    </div>
+
+    <!-- Dark gradient overlay -->
+    <div class="hero-full__overlay"></div>
+
+      <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <div class="logo">
                 <a href="index.html">Kowid</a>
@@ -27,14 +45,27 @@
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="problem.html">The Problem</a></li>
-                <li><a href="solution.html">Our Direction</a></li>
                 <li><a href="founders.html">Founders</a></li>
-                <li><a href="careers.html">Careers</a></li>
-                <li><a href="interns.html">Interns</a></li>
+                <li><a href="careers.html">Join Us</a></li>
+                <li><a href="feedback.html">Product Feedback</a></li>
                 <li><a href="contact.html" class="nav-cta">Contact</a></li>
             </ul>
         </div>
     </nav>
+
+    <!-- Centred Hero Text -->
+    <div class="hero-full__content">
+      <h1 class="hero-full__title">KOWID</h1>
+      <p class="hero-full__sub">
+        Quality Education.<br>
+        Accessible. Affordable.
+      </p>
+    </div>
+
+    <!-- Scroll-down arrow -->
+    <button class="hero-full__scroll" id="heroScroll" aria-label="Scroll down">&#8964;</button>
+
+  </section>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -44,11 +75,10 @@
                 <p class="hero-subtitle">We're building technology to help every child master core literacy and numeracy skills—early, effectively, and joyfully.</p>
                 <div class="hero-cta">
                     <a href="contact.html" class="btn btn-primary">Join the Mission</a>
-                    <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop&q=80" alt="Children collaborating and learning together in a classroom" style="border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <img src="https://images.unsplash.com/photo-1642140027869-03591a109d61?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHRyYW5zZm9ybWluZyUyMGVkdWNhdGlvbiUyMGluJTIwaW5kaWF8ZW58MHx8MHx8fDA%3D" alt="Children collaborating and learning together in a classroom" style="border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
@@ -62,22 +92,22 @@
             </div>
             <div class="cards-grid">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=250&fit=crop&q=80" alt="Students learning online" class="card-image">
+                    <img src="https://media.istockphoto.com/id/1336688015/photo/8-9-years-schoolboy-studying-at-home-during-covid-19-lockdown-period.webp?a=1&b=1&s=612x612&w=0&k=20&c=iFVrqIEmTCmilU51WpNaBNIYAaC00hSFZT46PQ5CvMQ=" alt="Students learning online" class="card-image">
                     <h3>Post-COVID Crisis</h3>
                     <p>Millions of children lost critical learning time. The gaps are widening—intervention is urgent.</p>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop&q=80" alt="Technology and education" class="card-image">
+                    <img src="https://plus.unsplash.com/premium_photo-1742167598053-2ec685d8d83d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGVkdWNhdGlvbiUyMHVzaW5nJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Technology and education" class="card-image">
                     <h3>Tech is Ready</h3>
                     <p>AI-powered personalization is now practical, affordable, and effective at scale.</p>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop&q=80" alt="Education policy and vision" class="card-image">
+                    <img src="https://media.istockphoto.com/id/1262758863/photo/new-education-policy-phrase-written-on-blackboard-with-white-chalk.webp?a=1&b=1&s=612x612&w=0&k=20&c=f5PkafYhEO8AVc7m1N58pSpdAqd_zwUqtykr91V3Lqo=" alt="Education policy and vision" class="card-image">
                     <h3>NEP 2020 Alignment</h3>
                     <p>National policy prioritizes foundational literacy—we're building the tools to make it happen.</p>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop&q=80" alt="Time for action in education" class="card-image">
+                    <img src="https://media.istockphoto.com/id/1395727646/photo/handheld-shot-of-village-school-girl-kids-seriously-busy-working-on-laptop-concept-of.webp?a=1&b=1&s=612x612&w=0&k=20&c=-V21wYnkHpNpJ6xk6GpOHrx05jJBHH6frF3xQ_0gd4U=" alt="Time for action in education" class="card-image">
                     <h3>Time to Act</h3>
                     <p>Every year of delay means another generation falls behind. Early intervention works.</p>
                 </div>
@@ -90,13 +120,13 @@
         <div class="container">
             <div class="overview-grid">
                 <div class="overview-item">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop&q=80" alt="Children learning together" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1692269725911-87697c558be1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxlYXJuaW5nJTIwZ2FwcyUyMGluJTIwaW5kaWF8ZW58MHx8MHx8fDA%3D" alt="Children learning together" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                     <h3>The Challenge</h3>
                     <p>50% of Class 5 students can't read Class 2 texts. Learning gaps compound—millions are left behind.</p>
                     <a href="problem.html" class="link-arrow">Explore the problem →</a>
                 </div>
                 <div class="overview-item">
-                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600&h=400&fit=crop&q=80" alt="Personalized learning" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <img src="https://media.istockphoto.com/id/1312514905/photo/little-boy-attending-online-classes-on-laptop-and-writing-on-notebook-at-home.webp?a=1&b=1&s=612x612&w=0&k=20&c=XriA6p_H3h7IP0M4-fBgvHiIWqhHlXK1vHJzOWn65pQ=" alt="Personalized learning" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                     <h3>Our Solution</h3>
                     <p>AI-powered platform for early gap detection and personalized learning paths.</p>
                     <a href="solution.html" class="link-arrow">See our vision →</a>
@@ -116,7 +146,7 @@
         <div class="container">
             <div class="two-column-grid" style="align-items: center; gap: 3rem;">
                 <div>
-                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&h=600&fit=crop&q=80" alt="Education transformation" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <img src="https://images.unsplash.com/photo-1524069290683-0457abfe42c3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHNtYXJ0JTIwZWR1Y2F0aW9uJTIwaW1wYWN0JTIwaW5kaWF8ZW58MHx8MHx8fDA%3D" alt="Education transformation" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                 </div>
                 <div>
                     <h2>Built for Real Impact</h2>
@@ -131,66 +161,89 @@
             </div>
         </div>
     </section>
-
-    <!-- CTA Section -->
+<!-- Cta Section -->
     <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Build the Future With Us</h2>
-                <p>Join our team and create lasting impact together.</p>
-                <div class="cta-buttons">
-                    <a href="interns.html" class="btn btn-white">Intern</a>
-                    <a href="careers.html" class="btn btn-white">Careers</a>
-                    <a href="contact.html" class="btn btn-primary">Get in Touch</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="container">
+    <div class="cta-split">
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Kowid</h4>
-                    <p>Building the future of foundational learning in India.</p>
-                    <p class="footer-tagline">कोविद् - Learned</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Explore</h4>
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="problem.html">The Problem</a></li>
-                        <li><a href="solution.html">Our Direction</a></li>
-                        <li><a href="founders.html">Founders</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Get Involved</h4>
-                    <ul>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="interns.html">Interns</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="mailto:hello@kowid.in">hello@kowid.in</a></li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">in</a>
-                        <a href="#" aria-label="Twitter">𝕏</a>
-                        <a href="#" aria-label="Instagram">ig</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Kowid. All rights reserved.</p>
-            </div>
+      <div class="cta-half">
+        <h2>Build the Future With Us</h2>
+        <p>Join our team and create lasting impact together.</p>
+        <a href="careers.html" class="btn btn-white">Careers</a>
+      </div>
+
+      <div class="cta-divider"></div>
+
+      <div class="cta-half">
+        <h2>Stay Connected</h2>
+        <p>Research updates, early access, and behind-the-build notes.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="your@email.com" />
+          <a href="#" class="btn btn-white">Subscribe</a>
         </div>
-    </footer>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Main Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand col -->
+      <div class="footer-col footer-brand">
+        <h4 class="footer-logo">Kowid</h4>
+        <p class="footer-script">कोविद् · Learned</p>
+        <p>Building the future of foundational learning in India — one child at a time.</p>
+        <div class="social-links">
+          <a href="https://in.linkedin.com/company/kowid-edtech" aria-label="LinkedIn">in</a>
+          <a href="https://twitter.com/kowid_edtech" aria-label="Twitter">𝕏</a>
+          <a href="https://instagram.com/kowid_edtech" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+
+      <!-- Explore col -->
+      <div class="footer-col">
+        <h5 class="footer-col-heading">Explore</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="problem.html">The Problem</a></li>
+          <li><a href="founders.html">Founders</a></li>
+        </ul>
+        <br><h5 class="footer-col-heading">Get Involved</h5>
+        <ul>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="feedback.html">Product Feedback</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact col -->
+      <div class="footer-col">
+        <h5 class="footer-col-heading">Contact</h5>
+        <ul>
+          <li><a href="mailto:info@kowid.com">info@kowid.com</a></li>
+          <li><a href="tel:+919890930707">+91 98909 30707</a></li>
+          <li><span><b>Branch Office:</b> 212, Corner Stone, Anupam Nagar, Kalyan West, Thane, Maharashtra, India. <br>PIN Code : 421301</span></li>
+          <li><span><b>Head Office:</b> 1301, B-1, Opal, Yogidham Phase 3, Kalyan West, Thane, Maharashtra, India. <br>PIN Code : 421301</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+      <p><b>GSTIN :</b> 27AAMCK1220F1ZU <b>CIN :</b> U85500MH2025PTC455171  © All rights reserved with Kowid EdTech Solutions Private Limited</p>
+      <div class="footer-legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+      <a href="#heroSection" class="back-to-top" aria-label="Back to top">↑</a>
+    </div>
+  </div>
+</footer>
 
     <script src="script.js"></script>
 </body>

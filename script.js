@@ -28,6 +28,28 @@ if (mobileMenuToggle) {
         mobileMenuToggle.classList.toggle('active');
     });
 }
+const navbar = document.getElementById('navbar');
+const isHomePage = document.body.dataset.page === 'home';
+
+if (isHomePage) {
+    const heroBg = document.getElementById('heroBg');
+
+    function handleNavbarScroll() {
+        const heroBgBottom = heroBg.getBoundingClientRect().bottom;
+        if (heroBgBottom <= 0) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    handleNavbarScroll();
+
+} else {
+    // All other pages: always white navbar with dark text
+    navbar.classList.add('solid');
+}
 
 // Close mobile menu when clicking on a link
 const navLinks = document.querySelectorAll('.nav-menu a');
@@ -56,25 +78,6 @@ function updateScrollProgress() {
         progressBar.style.width = scrolled + '%';
     }
 }
-
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    // Update scroll progress
-    updateScrollProgress();
-    
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -240,3 +243,143 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+const scrollEls = document.querySelectorAll('.animate-on-scroll');
+    if (scrollEls.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      scrollEls.forEach(el => observer.observe(el));
+    }
+ 
+    // ── Page loader ──
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('pageLoader');
+      if (loader) loader.classList.add('hidden');
+    });
+ 
+    // ── Scroll progress bar ──
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('scrollProgress');
+      if (bar) {
+        const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        bar.style.width = pct + '%';
+      }
+      // Back to top visibility
+      const btn = document.getElementById('backToTop');
+      if (btn) btn.classList.toggle('visible', window.scrollY > 300);
+      // Navbar scroll effect
+      const nav = document.getElementById('navbar');
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+ 
+    // ── Back to top ──
+    const btt = document.getElementById('backToTop');
+    if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+ 
+    // ── Mobile menu ──
+    const toggle = document.getElementById('mobileMenuToggle');
+    const menu   = document.getElementById('navMenu');
+    if (toggle && menu) toggle.addEventListener('click', () => menu.classList.toggle('active'));
+ 
+    // ── Character counters ──
+    function counter(textareaId, counterId) {
+      const el = document.getElementById(textareaId);
+      const ct = document.getElementById(counterId);
+      if (!el || !ct) return;
+      el.addEventListener('input', () => { ct.textContent = el.value.length; });
+    }
+    counter('whatWorked', 'workedCount');
+    counter('improvements', 'improvCount');
+    counter('oneChange', 'changeCount');
+ 
+    // ── Form submit ──
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+ 
+      // Basic validation: at least a star rating
+      const rating = document.querySelector('input[name="rating"]:checked');
+      if (!rating) {
+        alert('Please give us a star rating before submitting.');
+        return;
+      }
+ 
+      // Hide form, show success card
+      this.style.display = 'none';
+      const card = document.getElementById('successCard');
+      card.style.display = 'block';
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    if (scrollEls.length) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animated'); obs.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      scrollEls.forEach(el => obs.observe(el));
+    }
+
+    // ── Page loader ──
+    window.addEventListener('load', () => {
+      const l = document.getElementById('pageLoader');
+      if (l) l.classList.add('hidden');
+    });
+
+    // ── Scroll events ──
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      const bar = document.getElementById('scrollProgress');
+      if (bar) bar.style.width = pct + '%';
+      const btn = document.getElementById('backToTop');
+      if (btn) btn.classList.toggle('visible', window.scrollY > 300);
+      const nav = document.getElementById('navbar');
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    if (toggle && menu) toggle.addEventListener('click', () => menu.classList.toggle('active'));
+
+    // ── Tab switcher ──
+    function switchTab(panel, btn) {
+      // Hide all panels, deactivate all tabs
+      document.querySelectorAll('.path-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.path-tab').forEach(t => t.classList.remove('active'));
+      // Show selected
+      document.getElementById('panel-' + panel).classList.add('active');
+      btn.classList.add('active');
+      // Re-trigger animations in the newly visible panel
+      document.querySelectorAll('#panel-' + panel + ' .animate-on-scroll:not(.animated)').forEach(el => {
+        el.classList.add('animated');
+      });
+    }
+
+    function counter(textareaId, counterId) {
+      const el = document.getElementById(textareaId);
+      const ct = document.getElementById(counterId);
+      if (!el || !ct) return;
+      el.addEventListener('input', () => { ct.textContent = el.value.length; });
+    }
+    counter('whatWorked', 'workedCount');
+    counter('improvements', 'improvCount');
+    counter('oneChange', 'changeCount');
+
+    // ── Form submit ──
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Basic validation: at least a star rating
+      const rating = document.querySelector('input[name="rating"]:checked');
+      if (!rating) {
+        alert('Please give us a star rating before submitting.');
+        return;
+      }
+
+      // Hide form, show success card
+      this.style.display = 'none';
+      const card = document.getElementById('successCard');
+      card.style.display = 'block';
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
